@@ -1,10 +1,9 @@
-
-
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
+var firebaseConfig = {
       apiKey: "AIzaSyDxKyE5GZxnqanvykVj5x4Ty7t4CpNsLes",
       authDomain: "let-s-chat-fe8c6.firebaseapp.com",
+      databaseURL: "https://let-s-chat-fe8c6-default-rtdb.firebaseio.com",
       projectId: "let-s-chat-fe8c6",
       storageBucket: "let-s-chat-fe8c6.appspot.com",
       messagingSenderId: "698407909881",
@@ -13,11 +12,10 @@ const firebaseConfig = {
     };
     
     // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-
-function getData() {firebase.database().ref("/").on('value', function(snapshot) {document.getElementById("output").innerHTML = "";snapshot.forEach(function(childSnapshot) {childKey  = childSnapshot.key;
-       Room_names = childKey;
+     firebase.initializeApp(firebaseConfig);
+ 
+     function getData() {firebase.database().ref("/").on('value', function(snapshot) {document.getElementById("output").innerHTML = "";snapshot.forEach(function(childSnapshot) {childKey  = childSnapshot.key;
+      Room_names = childKey;
       //Start code
   console.log("Room name - " + room_name);
   row = "<div class='room_name'id="+Room_names+" onclick='redirecttoRoomname(this.id);'>#"+Room_names+"</div><hr>";
@@ -35,13 +33,13 @@ function addRoom() {
 
  localStorage.setItem("room_name", room_name);
 
- window.location="kwitter_room.html";
+ window.location="Let's Chat_room.html";
 }
 
 function redirecttoRoomname(name) {
       console.log(name);
       localStorage.setItem("Room_name", room_name);
-      window.location="kwitter_page.html";
+      window.location="Let's Chat_page.html";
 }
 
 function logout() {
